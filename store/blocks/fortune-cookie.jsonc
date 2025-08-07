@@ -1,0 +1,38 @@
+{
+  "store.custom#fortune-cookie": {
+    "blocks": [
+      "flex-layout.row#fc-banner",
+      "rich-text#fc-title",
+      "cookie-fortune-message#fc-message",
+      "rich-text#fc-footer"
+    ]
+  },
+  "flex-layout.row#fc-banner": {
+    "children": ["image#fc-image"]
+  },
+  "image#fc-image": {
+    "props": {
+      "src": "https://ruta-de-tu-imagen/banner.jpg",
+      "alt": "Fortune Cookie Banner",
+      "minWidth": "100%"
+    }
+  },
+  "rich-text#fc-title": {
+    "props": {
+      "text": "# Bienvenido a Fortune Cookie 🎉",
+      "alignment": "CENTER"
+    }
+  },
+  "cookie-fortune-message#fc-message": {
+    "props": {
+      "title": "Tu mensaje de la fortuna",
+      "buttonText": "Sacar otra"
+    }
+  },
+  "rich-text#fc-footer": {
+    "props": {
+      "text": "Gracias por visitarnos",
+      "alignment": "CENTER"
+    }
+  }
+}
