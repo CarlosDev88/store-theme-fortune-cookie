@@ -1,65 +1,111 @@
-# Store theme
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-Our boilerplate theme to create stores in the VTEX IO platform.
+## 📦 Dependencias
 
-## Preview
-![store-theme-default](https://user-images.githubusercontent.com/1354492/63937047-e8d81c80-ca37-11e9-86fc-61e88847bbfb.png)
+Este `store-theme` utiliza las siguientes dependencias principales:
 
-## Tutorial
-To understand how things work check our tutorial [Build a store using VTEX IO](https://vtex.io/docs/getting-started/build-stores-with-store-framework/1/)
+- [`vtex.store`](https://developers.vtex.com/docs/apps/vtex.store)  
+- [`vtex.store-header`](https://developers.vtex.com/docs/apps/vtex.store-header)  
+- [`vtex.store-footer`](https://developers.vtex.com/docs/apps/vtex.store-footer)  
+- [`vtex.flex-layout`](https://developers.vtex.com/docs/apps/vtex.flex-layout)  
+- [`valtech.fortune-cooky-app`](https://developers.vtex.com/) (aplicación personalizada que muestra mensajes de la fortuna)  
 
-## Dependencies
-All store components that you see on this document are open source too. Production ready, you can found those apps in this GitHub organization.
+---
 
-Store framework is the baseline to create any store using _VTEX IO Web Framework_.
-- [Store](https://github.com/vtex-apps/store/blob/master/README.md)
+## 🚀 Instalación y Ejecución
 
-Store GraphQL is a middleware to access all VTEX APIs.
-- [Store GraphQL](https://github.com/vtex-apps/store-graphql/blob/master/docs/README.md)
+1. **Clonar el repositorio:**
 
-### Store Component Apps
-- [Header](https://github.com/vtex-apps/store-header/blob/master/docs/README.md)
-- [Footer](https://github.com/vtex-apps/store-footer/blob/master/docs/README.md)
-- [Slider Layout](https://github.com/vtex-apps/slider-layout/blob/master/docs/README.md)
-- [Shelf](https://github.com/vtex-apps/shelf/blob/master/docs/README.md)
-- [Telemarketing](https://github.com/vtex-apps/telemarketing/blob/master/docs/README.md)
-- [Menu](https://github.com/vtex-apps/menu/blob/master/docs/README.md)
-- [Login](https://github.com/vtex-apps/login/blob/master/docs/README.md)
-- [Minicart](https://github.com/vtex-apps/minicart/blob/master/docs/README.md)
-- [Category Menu](https://github.com/vtex-apps/category-menu/blob/master/docs/README.md)
-- [Product Summary](https://github.com/vtex-apps/product-summary/blob/master/docs/README.md)
-- [Breadcrumb](https://github.com/vtex-apps/breadcrumb/blob/master/docs/README.md)
-- [Search Result](https://github.com/vtex-apps/search-result/blob/master/docs/README.md)
-- [Product Details](https://github.com/vtex-apps/product-details/blob/master/docs/README.md)
-- [Store Components](https://github.com/vtex-apps/store-components/blob/master/docs/README.md)
-- [Order Placed](https://github.com/vtex-apps/order-placed/blob/master/docs/README.md) 
+   git clone git@github.com:valtech/store-theme.git
+   cd store-theme
 
-### Store Pixel Apps
 
- - [Facebook Pixel](https://github.com/vtex-apps/facebook-pixel/blob/master/docs/README.md)
- - [Google Tag Manager](https://github.com/vtex-apps/google-tag-manager/blob/master/docs/README.md)
+2. **Instalar dependencias:**
 
-## Contributing
 
-Check it out [how to contribute](https://github.com/vtex-apps/awesome-io#contributing) with this project.
+   yarn install
 
-## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+3. **Iniciar workspace en VTEX IO:**
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="http://www.hugoccosta.com"><img src="https://avatars2.githubusercontent.com/u/20212776?v=4" width="100px;" alt=""/><br /><sub><b>Hugo Costa</b></sub></a><br /><a href="https://github.com/vtex-apps/store-theme/commits?author=hugocostadev" title="Documentation">📖</a></td>
-  </tr>
-</table>
+   vtex use {workspace}
+   vtex link
 
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+4. **Publicar (opcional):**
+
+
+   vtex publish
+
+
+---
+
+## 🌐 Landing de Fortune Cookie
+
+Se creó una **landing** en el `store-theme` que consume el bloque expuesto por `fortune-cooky-app`.
+
+### 📍 Path
+
+```
+https://{workspace}--{vendor}.myvtex.com/fortune-cookie
+```
+
+
+
+### 📄 Configuración (`store-theme` JSON)
+
+```json
+
+{
+  "store.custom#fortune-cookie": {
+    "blocks": [
+      "rich-text#fc-title",
+      "cookie-fortune-message#fc-message"
+    ]
+  },
+  "rich-text#fc-title": {
+    "props": {
+      "text": "# Bienvenido a Fortune Cookie 🎉",
+      "alignment": "CENTER",
+      "textPosition": "CENTER",
+      "blockClass": "fc-header"
+    }
+  },
+  "cookie-fortune-message#fc-message": {
+    "props": {
+      "title": "Tu mensaje de la fortuna",
+      "buttonText": "Sacar otra"
+    }
+  }
+}
+```
+
+
+### Resultado esperado:
+
+1. El usuario accede a `/fortune-cookie`.
+2. Se muestra un título con **Rich Text**.
+3. El componente `cookie-fortune-message` despliega un mensaje de la fortuna desde la app.
+4. El botón `"Sacar otra"` permite obtener un nuevo mensaje.
+
+---
+
+## 🛠️ Otros paths configurados
+
+Este `store-theme` también incluye páginas básicas:
+
+* `/about-us` → Página de información
+* `/faq` → Preguntas frecuentes
+* `/contact-us` → Formulario de contacto
+* `/fortune-cookie` → **Landing personalizada (Fortune Cookie)**
+
+---
+
+## 📄 Scripts útiles
+
+* `yarn install` → Instala dependencias
+* `vtex link` → Linkea el proyecto al workspace actual
+* `vtex publish` → Publica la versión del tema
+
+---
+
+
+
